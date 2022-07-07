@@ -34,7 +34,7 @@ const proudctSchema = mongoose.Schema(
       ref: "Category",
       required: true,
     },
-    countInstock: {
+    countInStock: {
       type: Number,
       required: true,
       min: 0,
@@ -61,5 +61,14 @@ const proudctSchema = mongoose.Schema(
     versionKey: false,
   }
 );
+
+proudctSchema.virtual('id').get(function(){
+  return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+proudctSchema.set('toJSON', {
+  virtuals: true
+});
 
 module.exports = mongoose.model("Product", proudctSchema);
