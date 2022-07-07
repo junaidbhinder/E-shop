@@ -22,4 +22,6 @@ app.get("/", (req, res) => {
   });
 });
 app.use("/categoryadd", categoryroutes);
-app.listen(process.env.PORT, () => console.log("server is running"));
+app.listen(process.env.PORT, () =>
+  console.log("server is running", process.env.PORT)
+);
