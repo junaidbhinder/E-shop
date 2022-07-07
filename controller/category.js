@@ -1,5 +1,5 @@
 const { response } = require("express");
-const category = require("../models/category.");
+const category = require("../models/category");
 module.exports = {
   async categoryadd(req, res) {
     try {
@@ -79,4 +79,4 @@ module.exports = {
       res.status(500).send({ error: error });
     }
   },
-};
+};  

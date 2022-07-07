@@ -10,4 +10,13 @@ const orderSchema = mongoose.Schema({
     versionKey: false,
   });
 
+  orderSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+  });
+  
+  // Ensure virtual fields are serialised.
+  orderSchema.set('toJSON', {
+    virtuals: true
+  });
+
 module.exports = mongoose.model("Order", orderSchema);

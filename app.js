@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const categoryroutes = require("./routes/category.routes");
+const productrouts = require("./routes/product.routes");
 app.use(
   bodyParser.json({
     limit: "100mb",
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
   });
 });
 app.use("/categoryadd", categoryroutes);
+app.use("/products", productrouts);
 app.listen(process.env.PORT, () =>
   console.log("server is running", process.env.PORT)
 );
