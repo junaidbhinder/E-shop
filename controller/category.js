@@ -60,4 +60,23 @@ module.exports = {
       res.status(500).send(error);
     }
   },
+  async updateCategory(req, res) {
+    try {
+      const categoryupdate = await category.findByIdAndUpdate(
+        req.params.id,
+        {
+          name: req.body.name,
+          icon: req.body.icon,
+          color: req.body.color,
+        },
+        { new: true }
+      );
+      if (!categoryupdate)
+        return res.status(400).json({ message: "Id can't match" });
+      res.status(201).send(categoryupdate);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error: error });
+    }
+  },
 };
